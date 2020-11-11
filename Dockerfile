@@ -28,7 +28,6 @@ systemctl start docker \
 curl -L https://github.com/docker/compose/releases/download/1.26.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose \
 chmod +x /usr/local/bin/docker-compose \
 mkdir -p /etc/docker \
-tee /etc/docker/daemon.json <<-'EOF' { "registry-mirrors": ["https://7ta50vdn.mirror.aliyuncs.com"] } EOF \
 systemctl daemon-reload \
 systemctl restart docker
 
