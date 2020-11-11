@@ -16,8 +16,7 @@ ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
     APP_ENV=prod
 
 RUN yum -y update \
-install -y git yum-utils device-mapper-persistent-data \
-lvm2
+install -y git yum-utils device-mapper-persistent-data
 
 RUN yum-config-manager \
         --add-repo \
