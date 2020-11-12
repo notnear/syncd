@@ -30,7 +30,6 @@ chmod +x /usr/local/bin/docker-compose \
 mkdir -p /etc/docker \
 systemctl daemon-reload \
 systemctl restart docker
-FROM tmaier/docker-compose:latest
 
 WORKDIR /syncd
 COPY --from=build /usr/local/src/output /syncd
