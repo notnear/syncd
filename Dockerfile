@@ -19,8 +19,8 @@ RUN yum -y update \
 yum install -y git yum-utils device-mapper-persistent-data lvm2 sudo
 
 #RUN yum-config-manager   --add-repo   https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
-RUN sed -i 's/download.docker.com/mirrors.ustc.edu.cn/docker-ce/g' /etc/yum.repos.d/docker-ce.repo
-RUN yum install -y --nobest docker-ce
+#RUN sed -i 's/download.docker.com/mirrors.ustc.edu.cn/docker-ce/g' /etc/yum.repos.d/docker-ce.repo
+RUN yum install -y docker-ce docker-ce-cli containerd.io
 RUN  systemctl enable docker
 RUN systemctl start docker
 RUN curl -L https://github.com/docker/compose/releases/download/1.26.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
