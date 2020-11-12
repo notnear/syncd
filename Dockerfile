@@ -3,7 +3,7 @@ COPY . /usr/local/src
 WORKDIR /usr/local/src
 RUN apk --no-cache add build-base && make
 
-FROM tmaier/docker-compose:latest
+FROM centos:latest
 
 WORKDIR /syncd
 COPY --from=build /usr/local/src/output /syncd
