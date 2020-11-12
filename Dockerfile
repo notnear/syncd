@@ -3,9 +3,9 @@ COPY . /usr/local/src
 WORKDIR /usr/local/src
 RUN apk --no-cache add build-base && make
 
-FROM centos:latest
+FROM tmaier/docker-compose:latest
 
 WORKDIR /syncd
 COPY --from=build /usr/local/src/output /syncd
 EXPOSE 8878
-CMD [ "/syncd/bin/syncd" ]
+CMD [ "/syncd/bin/syncd","sh" ]
