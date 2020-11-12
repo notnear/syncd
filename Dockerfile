@@ -8,4 +8,4 @@ FROM tmaier/docker-compose:latest
 WORKDIR /syncd
 COPY --from=build /usr/local/src/output /syncd
 EXPOSE 8878
-CMD [ "/syncd/bin/syncd","sh" ]
+CMD [ "/syncd/bin/syncd"]
