@@ -18,10 +18,8 @@ ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
 RUN yum -y update \
 yum install -y git yum-utils device-mapper-persistent-data lvm2 sudo
 
-#RUN yum-config-manager \
-#        --add-repo \
-#        https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo \
-#RUN sed -i 's/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g' /etc/yum.repos.d/docker-ce.repo \
+#RUN yum-config-manager   --add-repo   https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
+RUN sed -i 's/download.docker.com/mirrors.ustc.edu.cn/docker-ce/g' /etc/yum.repos.d/docker-ce.repo
 RUN yum install -y --nobest docker-ce
 RUN  systemctl enable docker
 RUN systemctl start docker
