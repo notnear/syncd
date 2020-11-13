@@ -23,16 +23,12 @@ RUN yum install -y git yum-utils device-mapper-persistent-data lvm2 sudo wget
 RUN wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo
 RUN sed -i 's+download.docker.com+mirrors.tuna.tsinghua.edu.cn/docker-ce+' /etc/yum.repos.d/docker-ce.repo
 RUN yum install -y docker-ce docker-ce-cli containerd.io
-RUN  systemctl enable docker
-RUN systemctl start docker
 RUN curl -L https://github.com/docker/compose/releases/download/1.26.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 RUN mkdir -p /etc/docker
-RUN systemctl daemon-reload
-RUN systemctl restart docker
 
 WORKDIR /syncd
 COPY --from=build /usr/local/src/output /syncd
 
 EXPOSE 8878
-CMD [ "/syncd/bin/syncd" ]
+CMD [ "/syncd/bin/syncd","systemctl enable docker","systemctl daemon-reload","systemctl restart docker" ]
