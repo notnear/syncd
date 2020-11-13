@@ -16,12 +16,12 @@ ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
     APP_ENV=prod
 
 RUN yum -y update \
-yum install -y git yum-utils device-mapper-persistent-data lvm2 sudo
+yum install -y git yum-utils device-mapper-persistent-data lvm2 sudo wget
 
 #RUN yum-config-manager   --add-repo   https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
 #RUN sed -i 's/download.docker.com/mirrors.ustc.edu.cn/docker-ce/g' /etc/yum.repos.d/docker-ce.repo
 RUN wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo
-RUN sudo sed -i 's+download.docker.com+mirrors.tuna.tsinghua.edu.cn/docker-ce+' /etc/yum.repos.d/docker-ce.repo
+RUN sed -i 's+download.docker.com+mirrors.tuna.tsinghua.edu.cn/docker-ce+' /etc/yum.repos.d/docker-ce.repo
 RUN yum install -y docker-ce docker-ce-cli containerd.io
 RUN  systemctl enable docker
 RUN systemctl start docker
