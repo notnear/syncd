@@ -15,8 +15,8 @@ ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
     COMPOSER_VERSION=1.9.0 \
     APP_ENV=prod
 
-RUN yum -y update \
-yum install -y git yum-utils device-mapper-persistent-data lvm2 sudo wget
+RUN yum -y update
+RUN yum install -y git yum-utils device-mapper-persistent-data lvm2 sudo wget
 
 #RUN yum-config-manager   --add-repo   https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
 #RUN sed -i 's/download.docker.com/mirrors.ustc.edu.cn/docker-ce/g' /etc/yum.repos.d/docker-ce.repo
